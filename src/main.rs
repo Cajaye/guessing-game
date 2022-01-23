@@ -1,15 +1,17 @@
 use rand::Rng;
-use std::io; //we get input/output from the std library // Rng defines methods that random number generators implement
+use std::io;
 
 fn main() {
-    println!("Guessing game!");
+    println!("This is a guessing game!");
     println!("Enter your guess");
 
-    //let secret_number =
+    let secret_number = rand::thread_rng().gen_range(1..101);
+    println!("The secret number is: {}", secret_number);
 
-    let mut guess = String::new(); //empty mutable string
+    let mut guess = String::new();
 
-    io::stdin().read_line(&mut guess).expect("Cannot read line"); // & references a variable and &mut references a mutabe variable
-
-    println!("You entered : {}", guess)
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("Cannot read input");
+    println!("You guessed: {}", guess);
 }
